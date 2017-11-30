@@ -1,0 +1,24 @@
+{
+  "name": "react-cestbleu-popup",
+  "version": "0.3.0",
+  "description": "React component for C'est Bleu popup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezze/react-cestbleu-popup.git"
+  },
+  "keywords": [
+    "react",
+    "popup",
+    "cestbleu"
+  ],
+  "author": "Dmitriy Pushkov <ezze@ezze.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ezze/react-cestbleu-popup/issues"
+  },
+  "homepage": "https://github.com/ezze/react-cestbleu-popup#readme"
+}
