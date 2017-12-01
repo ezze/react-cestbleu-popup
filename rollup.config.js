@@ -15,6 +15,14 @@ const globals = {
 
 const external = Object.keys(globals);
 
+const plugins = [
+    babel({
+        exclude: 'node_modules/**'
+    }),
+    resolve(),
+    commonjs()
+];
+
 if (process.env.NODE_ENV === 'production') {
     plugins.push(uglify({}, minify));
 }
@@ -28,11 +36,5 @@ export default {
     },
     globals,
     external,
-    plugins: [
-        babel({
-            exclude: 'node_modules/**'
-        }),
-        resolve(),
-        commonjs()
-    ]
+    plugins
 };
