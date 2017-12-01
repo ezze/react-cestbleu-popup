@@ -7,9 +7,7 @@ import { minify } from 'uglify-es';
 const { NODE_ENV } = process.env;
 
 const globals = {
-    classnames: 'classNames',
     i18next: 'i18next',
-    'prop-types': 'PropTypes',
     react: 'React',
     'react-dom': 'ReactDOM',
     'react-i18next': 'reactI18next'
