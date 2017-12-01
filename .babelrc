@@ -1,9 +1,17 @@
 {
   "presets": [
-    "env",
+    ["env", { "modules": false }],
     "react"
   ],
   "plugins": [
-    "add-module-exports"
-  ]
+    "external-helpers"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "external-helpers",
+        "transform-react-remove-prop-types"
+      ]
+    }
+  }
 }

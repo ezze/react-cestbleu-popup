@@ -2,5 +2,5 @@
 .babelrc
 .eslintrc.json
 .npmignore
-webpack.config.babel.js
+rollup*
 yarn.lock

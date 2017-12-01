@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import gator from 'gator';
 import classNames from 'classnames';
+
 import isFinite from 'lodash.isfinite';
 import isFunction from 'lodash.isfunction';
 import isString from 'lodash.isstring';
