@@ -6,7 +6,15 @@
   "jsnext:main": "src/index.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "build": "npm run dist:development && npm run dist:production",
+    "rebuild": "npm run clean && npm run build",
+    "dist": "webpack",
+    "dist:development": "cross-env NODE_ENV=development npm run dist",
+    "dist:production": "cross-env NODE_ENV=production npm run dist",
+    "lint": "eslint ./src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run lint && npm run rebuild"
   },
   "repository": {
     "type": "git",
@@ -27,7 +35,8 @@
     "cestbleu": "^0.3.0",
     "i18next": "^10.2.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-i18next": "^7.0.2"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -50,9 +59,6 @@
     "eslint": "^4.12.1",
     "eslint-config-ezze-react": "^0.3.0",
     "eslint-plugin-react": "^7.5.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-i18next": "^7.0.2",
     "rimraf": "^2.6.2",
     "webpack": "^3.9.1"
   }

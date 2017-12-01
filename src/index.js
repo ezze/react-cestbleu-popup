@@ -1,4 +1,4 @@
-import Popup from './popup';
+import Popup from './Popup';
 
 export {
     POPUP_ALIGN_LEFT,
