@@ -2,7 +2,9 @@
   "name": "react-cestbleu-popup",
   "version": "0.3.0",
   "description": "React component for C'est Bleu popup",
-  "main": "index.js",
+  "main": "dist/react-cestbleu-popup.js",
+  "jsnext:main": "src/index.js",
+  "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +22,26 @@
   "bugs": {
     "url": "https://github.com/ezze/react-cestbleu-popup/issues"
   },
-  "homepage": "https://github.com/ezze/react-cestbleu-popup#readme"
+  "homepage": "https://github.com/ezze/react-cestbleu-popup#readme",
+  "peerDependencies": {
+    "cestbleu": "^0.3.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "gator": "^1.2.4",
+    "lodash.isfinite": "^3.3.2",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isstring": "^4.0.1",
+    "lodash.keys": "^4.2.0",
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "cestbleu": "^0.3.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-i18next": "^7.0.2"
+  }
 }
