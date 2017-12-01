@@ -54,7 +54,6 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "cestbleu": "^0.3.0",
     "cross-env": "^5.1.1",
     "eslint": "^4.12.1",
     "eslint-config-ezze-react": "^0.3.0",
