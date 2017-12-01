@@ -1,17 +1,9 @@
 {
   "presets": [
-    ["env", { "modules": false }],
+    ["env"],
     "react"
   ],
-  "plugins": [
-    "external-helpers"
-  ],
-  "env": {
-    "production": {
-      "plugins": [
-        "external-helpers",
-        "transform-react-remove-prop-types"
-      ]
-    }
-  }
+  "ignore": [
+    "src/index.umd.js"
+  ]
 }

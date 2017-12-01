@@ -4,6 +4,8 @@ import resolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 import { minify } from 'uglify-es';
 
+const { NODE_ENV } = process.env;
+
 const globals = {
     classnames: 'classNames',
     i18next: 'i18next',
@@ -15,15 +17,29 @@ const globals = {
 
 const external = Object.keys(globals);
 
+const babelOptions = {
+    babelrc: false,
+    presets: [
+        ['env', { modules: false }],
+        'react'
+    ],
+    plugins: [
+        "external-helpers"
+    ],
+    exclude: 'node_modules/**'
+};
+
+if (NODE_ENV === 'production') {
+    babelOptions.plugins.push('transform-react-remove-prop-types');
+}
+
 const plugins = [
-    babel({
-        exclude: 'node_modules/**'
-    }),
+    babel(babelOptions),
     resolve(),
     commonjs()
 ];
 
-if (process.env.NODE_ENV === 'production') {
+if (NODE_ENV === 'production') {
     plugins.push(uglify({}, minify));
 }
 
@@ -31,7 +47,7 @@ export default {
     name: 'reactCestbleuPopup',
     input: 'src/index.umd.js',
     output: {
-        file: `dist/react-cestbleu-popup${process.env.NODE_ENV === 'production' ? '.min' : ''}.js`,
+        file: `dist/react-cestbleu-popup${NODE_ENV === 'production' ? '.min' : ''}.js`,
         format: 'umd'
     },
     globals,

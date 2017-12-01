@@ -22,6 +22,16 @@ export default {
         'react-i18next'
     ],
     plugins: [
-        babel()
+        babel({
+            babelrc: false,
+            presets: [
+                ['env', { modules: false }],
+                'react'
+            ],
+            plugins: [
+                "external-helpers"
+            ],
+            exclude: 'node_modules/**'
+        })
     ]
 };
