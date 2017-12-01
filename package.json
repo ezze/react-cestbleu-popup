@@ -1,0 +1,74 @@
+{
+  "name": "react-cestbleu-popup",
+  "version": "0.3.0",
+  "description": "React component for C'est Bleu popup",
+  "main": "dist/react-cestbleu-popup.js",
+  "jsnext:main": "dist/react-cestbleu-popup.es.js",
+  "module": "dist/react-cestbleu-popup.es.js",
+  "scripts": {
+    "build": "rimraf lib dist && npm run transpile && npm run dist",
+    "transpile": "babel src -d lib",
+    "dist": "npm run dist:es && npm run dist:umd:dev && npm run dist:umd:prod",
+    "dist:es": "rollup --config rollup.config.es.js",
+    "dist:umd": "rollup --config rollup.config.js",
+    "dist:umd:dev": "cross-env NODE_ENV=development npm run dist:umd",
+    "dist:umd:prod": "cross-env NODE_ENV=production npm run dist:umd",
+    "lint": "eslint ./src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run lint && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezze/react-cestbleu-popup.git"
+  },
+  "keywords": [
+    "react",
+    "popup",
+    "cestbleu"
+  ],
+  "author": "Dmitriy Pushkov <ezze@ezze.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ezze/react-cestbleu-popup/issues"
+  },
+  "homepage": "https://github.com/ezze/react-cestbleu-popup#readme",
+  "peerDependencies": {
+    "cestbleu": "^0.3.0",
+    "i18next": "^10.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-i18next": "^7.0.2"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "gator": "^1.2.4",
+    "lodash.isfinite": "^3.3.2",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isstring": "^4.0.1",
+    "lodash.keys": "^4.2.0",
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.1",
+    "eslint": "^4.12.1",
+    "eslint-config-ezze-react": "^0.3.0",
+    "eslint-plugin-react": "^7.5.1",
+    "mkdirp": "^0.5.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.52.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-es": "^3.2.0"
+  }
+}
