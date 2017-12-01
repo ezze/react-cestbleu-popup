@@ -162,7 +162,7 @@ class PopupItem extends Component {
 
         const onClick = isDisabled ? this.onDisabledClick : this.onClick;
 
-        const link = popupAlign === SIDE_RIGHT ? (
+        const link = popupAlign === POPUP_ALIGN_RIGHT ? (
             <a onClick={onClick}>
                 <span></span>
                 {this.getLabel()}
