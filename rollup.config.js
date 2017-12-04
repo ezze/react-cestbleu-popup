@@ -22,7 +22,7 @@ const babelOptions = {
         'react'
     ],
     plugins: [
-        "external-helpers"
+        'external-helpers'
     ],
     exclude: 'node_modules/**'
 };
