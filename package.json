@@ -60,7 +60,6 @@
     "eslint": "^4.12.1",
     "eslint-config-ezze-react": "^0.3.0",
     "eslint-plugin-react": "^7.5.1",
-    "mkdirp": "^0.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
