@@ -1,6 +1,6 @@
 {
   "name": "react-cestbleu-popup",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "React component for C'est Bleu popup",
   "main": "dist/react-cestbleu-popup.js",
   "jsnext:main": "dist/react-cestbleu-popup.es.js",
@@ -60,8 +60,6 @@
     "eslint": "^4.12.1",
     "eslint-config-ezze-react": "^0.3.0",
     "eslint-plugin-react": "^7.5.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.52.0",
     "rollup-plugin-babel": "^3.0.2",
