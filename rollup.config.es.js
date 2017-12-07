@@ -1,7 +1,7 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-    name: 'reactCestbleuPopup',
+    name: 'ReactCestbleuPopup',
     input: 'src/index.js',
     output: {
         file: 'dist/react-cestbleu-popup.es.js',
