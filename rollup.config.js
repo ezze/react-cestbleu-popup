@@ -22,7 +22,7 @@ const babelOptions = {
         'react'
     ],
     plugins: [
-        "external-helpers"
+        'external-helpers'
     ],
     exclude: 'node_modules/**'
 };
@@ -42,7 +42,7 @@ if (NODE_ENV === 'production') {
 }
 
 export default {
-    name: 'reactCestbleuPopup',
+    name: 'ReactCestbleuPopup',
     input: 'src/index.umd.js',
     output: {
         file: `dist/react-cestbleu-popup${NODE_ENV === 'production' ? '.min' : ''}.js`,
