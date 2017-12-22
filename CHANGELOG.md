@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.4.0 (2017-02-22)
+
+- C'est Bleu dependency version is updated.
+
 ### 0.3.3 (2017-02-07)
 
 - Module name is changed from `reactCestbleuPopup` to `ReactCestbleuPopup`.
