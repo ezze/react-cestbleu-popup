@@ -42,13 +42,13 @@ if (NODE_ENV === 'production') {
 }
 
 export default {
-    name: 'ReactCestbleuPopup',
     input: 'src/index.umd.js',
     output: {
+        name: 'ReactCestbleuPopup',
         file: `dist/react-cestbleu-popup${NODE_ENV === 'production' ? '.min' : ''}.js`,
-        format: 'umd'
+        format: 'umd',
+        globals
     },
-    globals,
     external,
     plugins
 };
