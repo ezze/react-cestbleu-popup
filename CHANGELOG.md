@@ -1,5 +1,7 @@
 ## Changelog
 
+### 0.6.0 (2019-04-09)
+
 - Dependencies are updated.
 - Library is built with `@geoapps/libbuilder`.
 
