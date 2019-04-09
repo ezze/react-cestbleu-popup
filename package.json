@@ -1,22 +1,17 @@
 {
   "name": "react-cestbleu-popup",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "React component for C'est Bleu popup",
   "main": "dist/react-cestbleu-popup.js",
   "jsnext:main": "dist/react-cestbleu-popup.es.js",
   "module": "dist/react-cestbleu-popup.es.js",
   "scripts": {
-    "build": "rimraf lib dist && npm run transpile && npm run dist",
-    "transpile": "babel src -d lib",
-    "dist": "npm run dist:es && npm run dist:umd:dev && npm run dist:umd:prod",
-    "dist:es": "rollup --config rollup.config.es.js",
-    "dist:umd": "rollup --config rollup.config.js",
-    "dist:umd:dev": "cross-env NODE_ENV=development npm run dist:umd",
-    "dist:umd:prod": "cross-env NODE_ENV=production npm run dist:umd",
-    "watch:es": "node --require babel-register rollup.watch.es.js",
-    "lint": "eslint ./src",
+    "build": "npm run dist",
+    "dist": "libbuilder --name=ReactCestbleuPopup",
+    "watch": "libbuilder --name=ReactCestbleuPopup --watch",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npm run lint && npm run build"
+    "prepublishOnly": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
@@ -34,40 +29,29 @@
   },
   "homepage": "https://github.com/ezze/react-cestbleu-popup#readme",
   "peerDependencies": {
-    "cestbleu": "^0.3.0 || ^0.4.0",
-    "i18next": "^10.0.0 || ^11.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-i18next": "^7.0.2"
+    "cestbleu": "^0.4.5",
+    "i18next": ">=15.0.0",
+    "react": ">=16.0.0",
+    "react-dom": "^16.0.0",
+    "react-i18next": "^10.0.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
+    "classnames": "^2.2.6",
     "gator": "^1.2.4",
     "lodash.isfinite": "^3.3.2",
     "lodash.isfunction": "^3.0.9",
     "lodash.isobject": "^3.0.2",
     "lodash.isstring": "^4.0.1",
     "lodash.keys": "^4.2.0",
-    "prop-types": "^15.6.1"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "chokidar": "^2.0.3",
-    "cross-env": "^5.1.5",
-    "eslint": "^4.19.1",
-    "eslint-config-ezze-react": "^0.4.0",
-    "eslint-plugin-react": "^7.7.0",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.58.2",
-    "rollup-plugin-babel": "^3.0.4",
-    "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-uglify": "^3.0.0",
-    "uglify-es": "^3.3.9"
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "@geoapps/libbuilder": "^0.3.2",
+    "eslint": "^5.16.0",
+    "eslint-config-ezze-react": "^0.7.2",
+    "eslint-plugin-react": "^7.12.4"
   }
 }
