@@ -1,0 +1,6 @@
+{
+  "i18next": "i18next",
+  "react": "React",
+  "react-dom": "ReactDOM",
+  "react-i18next": "reactI18next"
+}
