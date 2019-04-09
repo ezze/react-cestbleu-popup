@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 import isObject from 'lodash.isobject';
@@ -234,6 +234,4 @@ PopupItem.propTypes = {
   closeSiblingSubmenus: PropTypes.func.isRequired
 };
 
-export default translate(['popup'], {
-  withRef: true
-})(PopupItem);
+export default withTranslation('popup', { withRef: true })(PopupItem);

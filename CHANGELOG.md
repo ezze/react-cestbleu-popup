@@ -1,5 +1,7 @@
 ## Changelog
 
+- `translate` function is replaced by `withTranslation`.
+
 ### 0.6.0 (2019-04-09)
 
 - Dependencies are updated.
