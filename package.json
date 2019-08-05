@@ -38,9 +38,6 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "gator": "^1.2.4",
-    "lodash.isfinite": "^3.3.2",
-    "lodash.isstring": "^4.0.1",
-    "lodash.keys": "^4.2.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

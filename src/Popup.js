@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import gator from 'gator';
 import classNames from 'classnames';
 
-import isFinite from 'lodash.isfinite';
-import isString from 'lodash.isstring';
-import keys from 'lodash.keys';
-
 import {
   POPUP_ALIGN_LEFT,
   POPUP_ALIGN_RIGHT
@@ -125,7 +121,7 @@ class Popup extends Component {
       return;
     }
 
-    const ids = keys(this.popupItemElements);
+    const ids = Object.keys(this.popupItemElements);
     for (let i = 0; i < ids.length; i++) {
       const id = ids[i];
       if (id === exceptionId) {
@@ -156,12 +152,12 @@ class Popup extends Component {
     if (isOpen) {
       const { offsetX, offsetY } = this.props;
       if (align === POPUP_ALIGN_RIGHT) {
-        style.right = isFinite(offsetX) || isString(offsetX) ? offsetX : Popup.defaultProps.offsetX;
+        style.right = isFinite(offsetX) || typeof offsetX === 'string' ? offsetX : Popup.defaultProps.offsetX;
       }
       else {
-        style.left = isFinite(offsetX) || isString(offsetX) ? offsetX : Popup.defaultProps.offsetX;
+        style.left = isFinite(offsetX) || typeof offsetX === 'string' ? offsetX : Popup.defaultProps.offsetX;
       }
-      style.top = isFinite(offsetY) || isString(offsetY) ? offsetY : Popup.defaultProps.offsetY;
+      style.top = isFinite(offsetY) || typeof offsetY === 'string' ? offsetY : Popup.defaultProps.offsetY;
     }
 
     let content;
