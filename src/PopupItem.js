@@ -13,6 +13,10 @@ import {
 import Popup from './Popup';
 
 class PopupItem extends Component {
+  state = {
+    isSubmenuOpen: false
+  };
+
   constructor(props) {
     super(props);
 
@@ -23,10 +27,6 @@ class PopupItem extends Component {
     this.onSubmenuClick = this.onSubmenuClick.bind(this);
     this.onDisabledClick = this.onDisabledClick.bind(this);
     this.onClick = this.onClick.bind(this);
-
-    this.state = {
-      isSubmenuOpen: false
-    };
   }
 
   getData() {

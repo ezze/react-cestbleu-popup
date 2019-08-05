@@ -17,6 +17,31 @@ import {
 import PopupItem from './PopupItem';
 
 class Popup extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    offsetX: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    offsetY: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    portal: PropTypes.bool.isRequired,
+    border: PropTypes.bool.isRequired,
+    align: PropTypes.string.isRequired,
+    close: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
+    items: PropTypes.array,
+    data: PropTypes.object
+  };
+
+  static defaultProps = {
+    offsetX: 0,
+    offsetY: 0,
+    portal: true,
+    border: false,
+    align: POPUP_ALIGN_LEFT,
+    type: 'window',
+    items: [],
+    data: {}
+  };
+
   constructor(props) {
     super(props);
 
@@ -211,30 +236,5 @@ class Popup extends Component {
     this.close();
   }
 }
-
-Popup.defaultProps = {
-  offsetX: 0,
-  offsetY: 0,
-  portal: true,
-  border: false,
-  align: POPUP_ALIGN_LEFT,
-  type: 'window',
-  items: [],
-  data: {}
-};
-
-Popup.propTypes = {
-  id: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  offsetX: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  offsetY: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  portal: PropTypes.bool.isRequired,
-  border: PropTypes.bool.isRequired,
-  align: PropTypes.string.isRequired,
-  close: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
-  items: PropTypes.array,
-  data: PropTypes.object
-};
 
 export default Popup;
