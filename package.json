@@ -1,6 +1,6 @@
 {
   "name": "react-cestbleu-popup",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "React component for C'est Bleu popup",
   "main": "dist/react-cestbleu-popup.js",
   "jsnext:main": "dist/react-cestbleu-popup.es.js",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/ezze/react-cestbleu-popup#readme",
   "peerDependencies": {
-    "cestbleu": "^0.4.5",
+    "cestbleu": "^0.4.7",
     "i18next": ">=15.0.0",
     "react": ">=16.0.0",
     "react-dom": "^16.0.0",
@@ -38,20 +38,17 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "gator": "^1.2.4",
-    "lodash.isfinite": "^3.3.2",
-    "lodash.isfunction": "^3.0.9",
-    "lodash.isobject": "^3.0.2",
-    "lodash.isstring": "^4.0.1",
-    "lodash.keys": "^4.2.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/preset-env": "^7.4.2",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@geoapps/libbuilder": "^0.3.2",
-    "eslint": "^5.16.0",
-    "eslint-config-ezze-react": "^0.7.2",
-    "eslint-plugin-react": "^7.12.4"
+    "@geoapps/libbuilder": "^0.5.2",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-ezze-react": "^0.8.1",
+    "eslint-plugin-react": "^7.14.3"
   }
 }

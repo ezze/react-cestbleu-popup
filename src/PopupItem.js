@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import classNames from 'classnames';
-import isFunction from 'lodash.isfunction';
-import isObject from 'lodash.isobject';
 
 import {
   POPUP_ALIGN_LEFT,
@@ -13,6 +11,35 @@ import {
 import Popup from './Popup';
 
 class PopupItem extends Component {
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+    refId: PropTypes.string.isRequired,
+    popupId: PropTypes.string.isRequired,
+    popupBorder: PropTypes.bool.isRequired,
+    popupAlign: PropTypes.string.isRequired,
+    isPopupOpen: PropTypes.bool.isRequired,
+    id: PropTypes.string,
+    label: PropTypes.string,
+    enabled: PropTypes.func,
+    active: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
+    command: PropTypes.func,
+    items: PropTypes.array,
+    close: PropTypes.func.isRequired,
+    closeSiblingSubmenus: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    type: 'command',
+    popupBorder: false,
+    popupAlign: POPUP_ALIGN_LEFT,
+    isPopupOpen: false,
+    active: false
+  };
+
+  state = {
+    isSubmenuOpen: false
+  };
+
   constructor(props) {
     super(props);
 
@@ -23,15 +50,6 @@ class PopupItem extends Component {
     this.onSubmenuClick = this.onSubmenuClick.bind(this);
     this.onDisabledClick = this.onDisabledClick.bind(this);
     this.onClick = this.onClick.bind(this);
-
-    this.state = {
-      isSubmenuOpen: false
-    };
-  }
-
-  getData() {
-    const { popupData } = this.props;
-    return isObject(popupData) ? popupData : {};
   }
 
   openSubmenu() {
@@ -54,8 +72,8 @@ class PopupItem extends Component {
 
   executeCommand() {
     const { command } = this.props;
-    if (isFunction(command)) {
-      command(this.getData());
+    if (typeof command === 'function') {
+      command();
     }
   }
 
@@ -102,11 +120,11 @@ class PopupItem extends Component {
   }
 
   renderSubmenuItem() {
-    const { refId, popupId, popupBorder, popupAlign, popupData, id, enabled, active, items } = this.props;
+    const { refId, popupId, popupBorder, popupAlign, id, enabled, active, items } = this.props;
     const { isSubmenuOpen } = this.state;
 
-    const isDisabled = isFunction(enabled) ? !enabled(this.getData()) : false;
-    const isActive = isFunction(active) ? active(this.getData()) : active;
+    const isDisabled = typeof enabled === 'function' ? !enabled() : false;
+    const isActive = typeof active === 'function' ? active() : active;
 
     const className = classNames({
       'popup-item': true,
@@ -141,7 +159,6 @@ class PopupItem extends Component {
             close={this.closeMenu}
             type="menu"
             items={items}
-            data={popupData}
           />
         </div>
       </li>
@@ -151,8 +168,8 @@ class PopupItem extends Component {
   renderItem() {
     const { refId, popupAlign, enabled, active } = this.props;
 
-    const isDisabled = isFunction(enabled) ? !enabled(this.getData()) : false;
-    const isActive = isFunction(active) ? active(this.getData()) : active;
+    const isDisabled = typeof enabled === 'function' ? !enabled() : false;
+    const isActive = typeof active === 'function' ? active() : active;
 
     const className = classNames({
       'popup-item': true,
@@ -206,32 +223,5 @@ class PopupItem extends Component {
     this.closeMenu();
   }
 }
-
-PopupItem.defaultProps = {
-  type: 'command',
-  popupData: {},
-  popupBorder: false,
-  popupAlign: POPUP_ALIGN_LEFT,
-  isPopupOpen: false,
-  active: false
-};
-
-PopupItem.propTypes = {
-  type: PropTypes.string.isRequired,
-  refId: PropTypes.string.isRequired,
-  popupId: PropTypes.string.isRequired,
-  popupData: PropTypes.object.isRequired,
-  popupBorder: PropTypes.bool.isRequired,
-  popupAlign: PropTypes.string.isRequired,
-  isPopupOpen: PropTypes.bool.isRequired,
-  id: PropTypes.string,
-  label: PropTypes.string,
-  enabled: PropTypes.func,
-  active: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
-  command: PropTypes.func,
-  items: PropTypes.array,
-  close: PropTypes.func.isRequired,
-  closeSiblingSubmenus: PropTypes.func.isRequired
-};
 
 export default withTranslation('popup', { withRef: true })(PopupItem);

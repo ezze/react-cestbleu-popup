@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import gator from 'gator';
 import classNames from 'classnames';
 
-import isFinite from 'lodash.isfinite';
-import isFunction from 'lodash.isfunction';
-import isString from 'lodash.isstring';
-import keys from 'lodash.keys';
-
 import {
   POPUP_ALIGN_LEFT,
   POPUP_ALIGN_RIGHT
@@ -17,6 +12,29 @@ import {
 import PopupItem from './PopupItem';
 
 class Popup extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    offsetX: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    offsetY: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    portal: PropTypes.bool.isRequired,
+    border: PropTypes.bool.isRequired,
+    align: PropTypes.string.isRequired,
+    close: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
+    items: PropTypes.array
+  };
+
+  static defaultProps = {
+    offsetX: 0,
+    offsetY: 0,
+    portal: true,
+    border: false,
+    align: POPUP_ALIGN_LEFT,
+    type: 'window',
+    items: []
+  };
+
   constructor(props) {
     super(props);
 
@@ -44,7 +62,7 @@ class Popup extends Component {
       this.popupItemElements = {};
     }
 
-    const popupItemElement = isFunction(element.getWrappedInstance) ? element.getWrappedInstance() : element;
+    const popupItemElement = typeof element.getWrappedInstance === 'function' ? element.getWrappedInstance() : element;
     const node = ReactDOM.findDOMNode(popupItemElement);
     const refId = node.getAttribute('data-ref-id');
     this.popupItemElements[refId] = popupItemElement;
@@ -103,7 +121,7 @@ class Popup extends Component {
       return;
     }
 
-    const ids = keys(this.popupItemElements);
+    const ids = Object.keys(this.popupItemElements);
     for (let i = 0; i < ids.length; i++) {
       const id = ids[i];
       if (id === exceptionId) {
@@ -118,14 +136,7 @@ class Popup extends Component {
   }
 
   render() {
-    const {
-      id,
-      isOpen,
-      portal,
-      border,
-      align,
-      type
-    } = this.props;
+    const { id, isOpen, portal, border, align, type } = this.props;
 
     const className = classNames({
       popup: true,
@@ -141,22 +152,17 @@ class Popup extends Component {
     if (isOpen) {
       const { offsetX, offsetY } = this.props;
       if (align === POPUP_ALIGN_RIGHT) {
-        style.right = isFinite(offsetX) || isString(offsetX) ? offsetX : Popup.defaultProps.offsetX;
+        style.right = isFinite(offsetX) || typeof offsetX === 'string' ? offsetX : Popup.defaultProps.offsetX;
       }
       else {
-        style.left = isFinite(offsetX) || isString(offsetX) ? offsetX : Popup.defaultProps.offsetX;
+        style.left = isFinite(offsetX) || typeof offsetX === 'string' ? offsetX : Popup.defaultProps.offsetX;
       }
-      style.top = isFinite(offsetY) || isString(offsetY) ? offsetY : Popup.defaultProps.offsetY;
+      style.top = isFinite(offsetY) || typeof offsetY === 'string' ? offsetY : Popup.defaultProps.offsetY;
     }
 
     let content;
     if (type === 'menu') {
-      const {
-        items,
-        data,
-        close
-      } = this.props;
-
+      const { items, close } = this.props;
       const popupItems = [];
       for (let i = 0; i < items.length; i++) {
         const item = items[i];
@@ -167,7 +173,6 @@ class Popup extends Component {
             refId={refId}
             ref={this.capturePopupItemElement}
             popupId={id}
-            popupData={data || {}}
             popupBorder={border}
             popupAlign={align}
             isPopupOpen={isOpen}
@@ -211,30 +216,5 @@ class Popup extends Component {
     this.close();
   }
 }
-
-Popup.defaultProps = {
-  offsetX: 0,
-  offsetY: 0,
-  portal: true,
-  border: false,
-  align: POPUP_ALIGN_LEFT,
-  type: 'window',
-  items: [],
-  data: {}
-};
-
-Popup.propTypes = {
-  id: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  offsetX: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  offsetY: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  portal: PropTypes.bool.isRequired,
-  border: PropTypes.bool.isRequired,
-  align: PropTypes.string.isRequired,
-  close: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
-  items: PropTypes.array,
-  data: PropTypes.object
-};
 
 export default Popup;
