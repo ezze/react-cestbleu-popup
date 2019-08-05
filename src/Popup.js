@@ -5,7 +5,6 @@ import gator from 'gator';
 import classNames from 'classnames';
 
 import isFinite from 'lodash.isfinite';
-import isFunction from 'lodash.isfunction';
 import isString from 'lodash.isstring';
 import keys from 'lodash.keys';
 
@@ -27,8 +26,7 @@ class Popup extends Component {
     align: PropTypes.string.isRequired,
     close: PropTypes.func.isRequired,
     type: PropTypes.string.isRequired,
-    items: PropTypes.array,
-    data: PropTypes.object
+    items: PropTypes.array
   };
 
   static defaultProps = {
@@ -38,8 +36,7 @@ class Popup extends Component {
     border: false,
     align: POPUP_ALIGN_LEFT,
     type: 'window',
-    items: [],
-    data: {}
+    items: []
   };
 
   constructor(props) {
@@ -69,7 +66,7 @@ class Popup extends Component {
       this.popupItemElements = {};
     }
 
-    const popupItemElement = isFunction(element.getWrappedInstance) ? element.getWrappedInstance() : element;
+    const popupItemElement = typeof element.getWrappedInstance === 'function' ? element.getWrappedInstance() : element;
     const node = ReactDOM.findDOMNode(popupItemElement);
     const refId = node.getAttribute('data-ref-id');
     this.popupItemElements[refId] = popupItemElement;
@@ -143,14 +140,7 @@ class Popup extends Component {
   }
 
   render() {
-    const {
-      id,
-      isOpen,
-      portal,
-      border,
-      align,
-      type
-    } = this.props;
+    const { id, isOpen, portal, border, align, type } = this.props;
 
     const className = classNames({
       popup: true,
@@ -176,12 +166,7 @@ class Popup extends Component {
 
     let content;
     if (type === 'menu') {
-      const {
-        items,
-        data,
-        close
-      } = this.props;
-
+      const { items, close } = this.props;
       const popupItems = [];
       for (let i = 0; i < items.length; i++) {
         const item = items[i];
@@ -192,7 +177,6 @@ class Popup extends Component {
             refId={refId}
             ref={this.capturePopupItemElement}
             popupId={id}
-            popupData={data || {}}
             popupBorder={border}
             popupAlign={align}
             isPopupOpen={isOpen}

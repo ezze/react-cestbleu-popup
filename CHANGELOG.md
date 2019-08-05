@@ -1,5 +1,7 @@
 ## Changelog
 
+- `data` property is removed.
+
 ### 0.6.1 (2019-04-09)
 
 - `translate` function is replaced by `withTranslation`.
