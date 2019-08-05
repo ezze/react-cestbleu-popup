@@ -1,5 +1,7 @@
 ## Changelog
 
+### 0.7.0 (2019-08-05)
+
 - `data` property is removed.
 
 ### 0.6.1 (2019-04-09)
