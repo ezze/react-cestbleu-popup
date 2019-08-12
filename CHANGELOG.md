@@ -1,5 +1,8 @@
 ## Changelog
 
+- `componetWillReceiveProps` is not used anymore to handle `openTime`.
+- Peer dependencies `react`, `react-dom` and `react-i18next` are upgraded.
+
 ### 0.7.0 (2019-08-05)
 
 - `data` property is removed.

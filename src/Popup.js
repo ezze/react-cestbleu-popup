@@ -43,10 +43,6 @@ class Popup extends Component {
     this.closeSiblingSubmenus = this.closeSiblingSubmenus.bind(this);
     this.onOutsideMouseClick = this.onOutsideMouseClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
-
-    this.state = {
-      openTime: props.isOpen ? new Date().getTime() : null
-    };
   }
 
   capturePopupElement(element) {
@@ -75,31 +71,6 @@ class Popup extends Component {
     gator(document).on('keydown', this.onKeyDown);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { props } = this;
-
-    if (
-      nextProps.isOpen && (!props.isOpen || (
-        props.isOpen && (nextProps.offsetX !== props.offsetX || nextProps.offsetY !== props.offsetY)
-      ))
-    ) {
-      // Popup is opened right now
-      this.setState({
-        openTime: new Date().getTime()
-      });
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.state.openTime) {
-      setTimeout(() => {
-        this.setState({
-          openTime: null
-        });
-      }, 0);
-    }
-  }
-
   componentWillUnmount() {
     gator(document).off('click', this.onOutsideMouseClick);
     gator(document).off('touchstart', this.onOutsideMouseClick);
@@ -108,11 +79,6 @@ class Popup extends Component {
   }
 
   close() {
-    // Doing open time check to prevent closing the popup
-    // by propagated click event that initialliy caused popup's opening
-    if (this.state.openTime) {
-      return;
-    }
     this.props.close();
   }
 
