@@ -52,6 +52,12 @@ class PopupItem extends Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (!this.props.isPopupOpen && prevProps.isPopupOpen) {
+      this.closeSubmenu();
+    }
+  }
+
   openSubmenu() {
     this.setState({
       isSubmenuOpen: true
@@ -74,12 +80,6 @@ class PopupItem extends Component {
     const { command } = this.props;
     if (typeof command === 'function') {
       command();
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.isPopupOpen && !nextProps.isPopupOpen) {
-      this.closeSubmenu();
     }
   }
 
