@@ -95,13 +95,6 @@ class Popup extends Component {
   }
 
   close() {
-    try {
-      throw new Error;
-    }
-    catch (e) {
-      console.log(e.stack);
-      console.log(this.props.items);
-    }
     this.props.close();
   }
 
