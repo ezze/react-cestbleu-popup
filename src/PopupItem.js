@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 import {
@@ -42,10 +41,8 @@ class PopupItem extends Component {
 
   constructor(props) {
     super(props);
-
     this.closeMenu = this.closeMenu.bind(this);
     this.closeSubmenu = this.closeSubmenu.bind(this);
-    this.getLabel = this.getLabel.bind(this);
     this.onDelimiterClick = this.onDelimiterClick.bind(this);
     this.onSubmenuClick = this.onSubmenuClick.bind(this);
     this.onDisabledClick = this.onDisabledClick.bind(this);
@@ -83,22 +80,6 @@ class PopupItem extends Component {
     }
   }
 
-  getLabel() {
-    const { t, popupId, id, label } = this.props;
-
-    let itemLabel = t(`${popupId}.${id}`, {
-      defaultValue: ''
-    });
-
-    if (!itemLabel) {
-      itemLabel = t(`${popupId}.${id}.label`, {
-        defaultValue: label
-      });
-    }
-
-    return itemLabel;
-  }
-
   render() {
     const { type } = this.props;
 
@@ -120,7 +101,7 @@ class PopupItem extends Component {
   }
 
   renderSubmenuItem() {
-    const { refId, popupId, popupBorder, popupAlign, id, enabled, active, items } = this.props;
+    const { refId, popupId, popupBorder, popupAlign, id, label, enabled, active, items } = this.props;
     const { isSubmenuOpen } = this.state;
 
     const isDisabled = typeof enabled === 'function' ? !enabled() : false;
@@ -137,11 +118,11 @@ class PopupItem extends Component {
     const link = popupAlign === POPUP_ALIGN_RIGHT ? (
       <a onClick={onClick}>
         <i className="popup-item-caret fa fa-caret-left"></i>
-        <span>{this.getLabel()}</span>
+        <span>{label}</span>
       </a>
     ) : (
       <a onClick={onClick}>
-        <span>{this.getLabel()}</span>
+        <span>{label}</span>
         <i className="popup-item-caret fa fa-caret-right"></i>
       </a>
     );
@@ -166,7 +147,7 @@ class PopupItem extends Component {
   }
 
   renderItem() {
-    const { refId, popupAlign, enabled, active } = this.props;
+    const { refId, popupAlign, label, enabled, active } = this.props;
 
     const isDisabled = typeof enabled === 'function' ? !enabled() : false;
     const isActive = typeof active === 'function' ? active() : active;
@@ -182,11 +163,11 @@ class PopupItem extends Component {
     const link = popupAlign === POPUP_ALIGN_RIGHT ? (
       <a onClick={onClick}>
         <span></span>
-        {this.getLabel()}
+        {label}
       </a>
     ) : (
       <a onClick={onClick}>
-        {this.getLabel()}
+        {label}
       </a>
     );
 
@@ -224,4 +205,4 @@ class PopupItem extends Component {
   }
 }
 
-export default withTranslation('popup', { withRef: true })(PopupItem);
+export default PopupItem;

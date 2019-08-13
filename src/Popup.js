@@ -35,6 +35,10 @@ class Popup extends Component {
     items: []
   };
 
+  state = {
+    openTime: null
+  };
+
   constructor(props) {
     super(props);
 
@@ -78,7 +82,26 @@ class Popup extends Component {
     gator(document).off('keydown', this.onKeyDown);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.openTime && this.state.openTime) {
+      setTimeout(() => {
+        this.setState({ openTime: null });
+      }, 0);
+    }
+
+    if (!prevProps.isOpen && this.props.isOpen) {
+      this.setState({ openTime: new Date() });
+    }
+  }
+
   close() {
+    try {
+      throw new Error;
+    }
+    catch (e) {
+      console.log(e.stack);
+      console.log(this.props.items);
+    }
     this.props.close();
   }
 
@@ -167,6 +190,9 @@ class Popup extends Component {
   }
 
   onOutsideMouseClick(event) {
+    if (this.state.openTime) {
+      return;
+    }
     const { isOpen } = this.props;
     if (!isOpen || this.popupElement === event.target || this.popupElement.contains(event.target)) {
       return;

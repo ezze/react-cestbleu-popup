@@ -29,11 +29,9 @@
   },
   "homepage": "https://github.com/ezze/react-cestbleu-popup#readme",
   "peerDependencies": {
-    "cestbleu": "^0.4.7",
-    "i18next": ">=15.0.0",
+    "cestbleu": "^0.4.8",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-i18next": "^10.12.0"
+    "react-dom": "^16.9.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",
