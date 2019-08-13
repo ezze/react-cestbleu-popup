@@ -1,6 +1,6 @@
 {
   "name": "react-cestbleu-popup",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "React component for C'est Bleu popup",
   "main": "dist/react-cestbleu-popup.js",
   "jsnext:main": "dist/react-cestbleu-popup.es.js",

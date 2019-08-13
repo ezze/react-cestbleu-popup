@@ -1,5 +1,7 @@
 ## Changelog
 
+### 0.9.0 (2019-08-13)
+
 - `openTime` is back to fix outside mouse click issues.
 - `i18next` is removed.
 
