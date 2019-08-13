@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.9.0 (2019-08-13)
+
+- `openTime` is back to fix outside mouse click issues.
+- `i18next` is removed.
+
 ### 0.8.0 (2019-08-12)
 
 - `componetWillReceiveProps` is not used anymore to handle `openTime`.
