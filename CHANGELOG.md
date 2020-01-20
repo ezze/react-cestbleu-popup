@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.9.1 (2020-01-20)
+
+- Rendering of popup items' icons is supported.
+
 ### 0.9.0 (2019-08-13)
 
 - `openTime` is back to fix outside mouse click issues.

@@ -19,6 +19,7 @@ class PopupItem extends Component {
     isPopupOpen: PropTypes.bool.isRequired,
     id: PropTypes.string,
     label: PropTypes.string,
+    icon: PropTypes.any,
     enabled: PropTypes.func,
     active: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
     command: PropTypes.func,
@@ -147,7 +148,7 @@ class PopupItem extends Component {
   }
 
   renderItem() {
-    const { refId, popupAlign, label, enabled, active } = this.props;
+    const { refId, popupAlign, label, icon, enabled, active } = this.props;
 
     const isDisabled = typeof enabled === 'function' ? !enabled() : false;
     const isActive = typeof active === 'function' ? active() : active;
@@ -158,16 +159,18 @@ class PopupItem extends Component {
       'popup-item-active': isActive
     });
 
+    const iconComponent = typeof icon === 'string' ? <i className={icon} /> : icon;
+
     const onClick = isDisabled ? this.onDisabledClick : this.onClick;
 
     const link = popupAlign === POPUP_ALIGN_RIGHT ? (
       <a onClick={onClick}>
-        <span></span>
-        {label}
+        <div></div>
+        <div>{iconComponent} <span>{label}</span></div>
       </a>
     ) : (
       <a onClick={onClick}>
-        {label}
+        <div>{iconComponent} <span>{label}</span></div>
       </a>
     );
 
