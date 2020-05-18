@@ -81,6 +81,32 @@ class PopupItem extends Component {
     }
   }
 
+  onDelimiterClick(event) {
+    event.stopPropagation();
+  }
+
+  onSubmenuClick(event) {
+    event.stopPropagation();
+    if (this.state.isSubmenuOpen) {
+      this.closeSubmenu();
+    }
+    else {
+      const { id, closeSiblingSubmenus } = this.props;
+      closeSiblingSubmenus(id);
+      this.openSubmenu();
+    }
+  }
+
+  onDisabledClick(event) {
+    event.stopPropagation();
+  }
+
+  onClick(event) {
+    event.stopPropagation();
+    this.executeCommand();
+    this.closeMenu();
+  }
+
   render() {
     const { type } = this.props;
 
@@ -179,32 +205,6 @@ class PopupItem extends Component {
         {link}
       </li>
     );
-  }
-
-  onDelimiterClick(event) {
-    event.stopPropagation();
-  }
-
-  onSubmenuClick(event) {
-    event.stopPropagation();
-    if (this.state.isSubmenuOpen) {
-      this.closeSubmenu();
-    }
-    else {
-      const { id, closeSiblingSubmenus } = this.props;
-      closeSiblingSubmenus(id);
-      this.openSubmenu();
-    }
-  }
-
-  onDisabledClick(event) {
-    event.stopPropagation();
-  }
-
-  onClick(event) {
-    event.stopPropagation();
-    this.executeCommand();
-    this.closeMenu();
   }
 }
 

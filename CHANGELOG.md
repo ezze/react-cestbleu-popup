@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.10.0 (2020-05-19)
+
+- `withPopupMenu` higher order component is added.
+- `gator` dependency has been removed.
+
 ### 0.9.1 (2020-01-20)
 
 - Rendering of popup items' icons is supported.
