@@ -1,5 +1,7 @@
 ## Changelog
 
+- `gator` dependency has been removed.
+
 ### 0.9.1 (2020-01-20)
 
 - Rendering of popup items' icons is supported.

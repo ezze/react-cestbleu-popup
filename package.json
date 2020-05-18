@@ -35,7 +35,6 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "gator": "^1.2.4",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import gator from 'gator';
 import classNames from 'classnames';
 
 import {
@@ -69,17 +68,17 @@ class Popup extends Component {
   }
 
   componentDidMount() {
-    gator(document).on('click', this.onOutsideMouseClick);
-    gator(document).on('touchstart', this.onOutsideMouseClick);
-    gator(document).on('contextmenu', this.onOutsideMouseClick);
-    gator(document).on('keydown', this.onKeyDown);
+    ['click', 'touchstart', 'contextmenu'].forEach(event => {
+      document.addEventListener(event, this.onOutsideMouseClick);
+    });
+    document.addEventListener('keydown', this.onKeyDown);
   }
 
   componentWillUnmount() {
-    gator(document).off('click', this.onOutsideMouseClick);
-    gator(document).off('touchstart', this.onOutsideMouseClick);
-    gator(document).off('contextmenu', this.onOutsideMouseClick);
-    gator(document).off('keydown', this.onKeyDown);
+    ['click', 'touchstart', 'contextmenu'].forEach(event => {
+      document.removeEventListener(event, this.onOutsideMouseClick);
+    });
+    document.removeEventListener('keydown', this.onKeyDown);
   }
 
   componentDidUpdate(prevProps, prevState) {
