@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { findDOMNode, createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -62,7 +62,7 @@ class Popup extends Component {
     }
 
     const popupItemElement = typeof element.getWrappedInstance === 'function' ? element.getWrappedInstance() : element;
-    const node = ReactDOM.findDOMNode(popupItemElement);
+    const node = findDOMNode(popupItemElement);
     const refId = node.getAttribute('data-ref-id');
     this.popupItemElements[refId] = popupItemElement;
   }
@@ -114,6 +114,25 @@ class Popup extends Component {
         popupItemElement.closeSubmenu();
       }
     }
+  }
+
+  onOutsideMouseClick(event) {
+    if (this.state.openTime) {
+      return;
+    }
+    const { isOpen } = this.props;
+    if (!isOpen || this.popupElement === event.target || this.popupElement.contains(event.target)) {
+      return;
+    }
+    this.close();
+  }
+
+  onKeyDown(event) {
+    const { isOpen } = this.props;
+    if (!isOpen || event.keyCode !== 27) {
+      return;
+    }
+    this.close();
   }
 
   render() {
@@ -178,26 +197,7 @@ class Popup extends Component {
       );
     }
 
-    return portal ? ReactDOM.createPortal(content, document.body) : content;
-  }
-
-  onOutsideMouseClick(event) {
-    if (this.state.openTime) {
-      return;
-    }
-    const { isOpen } = this.props;
-    if (!isOpen || this.popupElement === event.target || this.popupElement.contains(event.target)) {
-      return;
-    }
-    this.close();
-  }
-
-  onKeyDown(event) {
-    const { isOpen } = this.props;
-    if (!isOpen || event.keyCode !== 27) {
-      return;
-    }
-    this.close();
+    return portal ? createPortal(content, document.body) : content;
   }
 }
 

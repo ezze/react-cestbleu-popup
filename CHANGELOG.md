@@ -1,5 +1,6 @@
 ## Changelog
 
+- `withPopupMenu` higher order component is added.
 - `gator` dependency has been removed.
 
 ### 0.9.1 (2020-01-20)
