@@ -1,5 +1,7 @@
 ## Changelog
 
+### 0.11.0 (2020-06-05)
+
 - External reference is forwarded to a wrapped component by `withPopupMenu`.
 
 ### 0.10.0 (2020-05-19)
