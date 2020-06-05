@@ -14,7 +14,7 @@ const withPopupMenu = (options = {}) => {
   } = options;
 
   return WrappedComponent => {
-    return class ComponentWithPopup extends Component {
+    class ComponentWithPopup extends Component {
       state = {
         open: false,
         offsetX: 0,
@@ -44,6 +44,11 @@ const withPopupMenu = (options = {}) => {
 
       componentWillUnmount() {
         document.removeEventListener('contextmenu', this.onContextMenu);
+      }
+
+      getWrappedRef() {
+        const { forwardedRef } = this.props;
+        return forwardedRef ? forwardedRef : this.wrappedRef;
       }
 
       openPopup(offsetX, offsetY, items = null) {
@@ -84,7 +89,7 @@ const withPopupMenu = (options = {}) => {
           popupMenuItems = items;
         }
 
-        const wrappedElement = findDOMNode(this.wrappedRef.current);
+        const wrappedElement = findDOMNode(this.getWrappedRef().current);
         const path = event.composedPath();
         let analyze = true;
 
@@ -138,7 +143,7 @@ const withPopupMenu = (options = {}) => {
         return (
           <>
             <WrappedComponent
-              ref={this.wrappedRef}
+              ref={this.getWrappedRef()}
               openPopup={this.openPopup}
               closePopup={this.closePopup}
               {...props}
@@ -157,7 +162,13 @@ const withPopupMenu = (options = {}) => {
           </>
         );
       }
-    };
+    }
+
+    return React.forwardRef((props, ref) => {
+      return (
+        <ComponentWithPopup {...props} forwardedRef={ref} />
+      );
+    });
   };
 };
 
