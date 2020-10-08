@@ -1,5 +1,7 @@
 ## Changelog
 
+- Context menu event is passed to a function to get menu items.
+
 ### 0.11.0 (2020-06-05)
 
 - External reference is forwarded to a wrapped component by `withPopupMenu`.

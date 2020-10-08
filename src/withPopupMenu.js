@@ -128,7 +128,7 @@ const withPopupMenu = (options = {}) => {
             continue;
           }
 
-          const items = popupMenuItems(menuOptions);
+          const items = popupMenuItems({ ...menuOptions, contextMenuEvent: event });
           if (Array.isArray(items) && items.length > 0) {
             this.openPopup(event.x, event.y, items);
             return;
