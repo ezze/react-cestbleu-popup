@@ -1,5 +1,7 @@
 ## Changelog
 
+### 0.12.0 (2020-10-08)
+
 - Context menu event is passed to a function to get menu items.
 
 ### 0.11.0 (2020-06-05)
